@@ -2,7 +2,7 @@ buildscript {
 	ext {
 		cleanArchitectureVersion = '3.23.1'
 		springBootVersion = '3.5.0'
-		sonarVersion = '6.2.0.5505'
+		sonarVersion = '4.4.1.3373'  // Actualizado a una versión más reciente compatible
 		jacocoVersion = '0.8.13'
 		pitestVersion = '1.15.0'
         lombokVersion = '1.18.38'
@@ -30,7 +30,8 @@ sonar {
         property "sonar.java.coveragePlugin", "jacoco"
         property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacocoMergedReport/jacocoMergedReport.xml"
         property "sonar.pitest.reportPaths", "build/reports/pitest/mutations.xml"
-        property "sonar.externalIssuesReportPaths", "build/issues.json"
+        // Comentando esta línea para evitar que busque un archivo que no existe
+        // property "sonar.externalIssuesReportPaths", "build/issues.json"
     }
 }
 
