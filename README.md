@@ -1,5 +1,12 @@
 ﻿# CRUD de Usuarios – Scaffold Clean Architecture Bancolombia
 
+[![Build Status](https://github.com/SantiagoSo2425/Scaffold_Bancolombia/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/SantiagoSo2425/Scaffold_Bancolombia/actions/workflows/ci-cd.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SantiagoSo2425_Scaffold_Bancolombia&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=SantiagoSo2425_Scaffold_Bancolombia)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SantiagoSo2425_Scaffold_Bancolombia&metric=coverage)](https://sonarcloud.io/summary/new_code?id=SantiagoSo2425_Scaffold_Bancolombia)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
+
 ## 🧾 Descripción del Proyecto
 Este proyecto es un CRUD (Crear, Leer, Actualizar, Eliminar) de usuarios, desarrollado utilizando el **Scaffold Clean Architecture** de Bancolombia. El objetivo es demostrar cómo implementar un sistema básico de gestión de usuarios siguiendo las mejores prácticas de arquitectura limpia, ideal para entornos bancarios o empresariales.
 
@@ -436,5 +443,3 @@ El archivo de configuración está diseñado para ser extensible y adaptable a l
 MIT License
 
 Copyright (c) 2025 Santiago Suarez Osorio
-
-
