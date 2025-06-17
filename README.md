@@ -91,6 +91,8 @@ Quiero expresar mi profundo interés y compromiso por ser parte de Bancolombia. 
    - Deuda técnica
    - Código duplicado
    - Complejidad ciclomática
+   ![image](https://github.com/user-attachments/assets/663d9101-b7c1-4db0-bd40-f91386b2ae71)
+
 
 ### Consejos para la resolución de problemas
 - Si enfrenta problemas de autenticación, asegúrese de haber generado correctamente el token en SonarQube
@@ -438,6 +440,8 @@ El pipeline puede adaptarse fácilmente a necesidades específicas:
 5. **Infraestructura como código**: Integrar con Terraform, AWS CloudFormation u otras herramientas de IaC
 
 El archivo de configuración está diseñado para ser extensible y adaptable a los flujos de trabajo específicos de cada equipo o proyecto.
+
+
 
 ## 📄 Licencia
 
