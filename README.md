@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://adoptium.net/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Docker](https://img.shields.io/docker/pulls/santiagosuarezosorio/scaffold-usuarios.svg)](https://hub.docker.com/r/santiagosuarezosorio/scaffold-usuarios)
 
 ## 🧾 Descripción del Proyecto
 Este proyecto es un CRUD (Crear, Leer, Actualizar, Eliminar) de usuarios, desarrollado utilizando el **Scaffold Clean Architecture** de Bancolombia. El objetivo es demostrar cómo implementar un sistema básico de gestión de usuarios siguiendo las mejores prácticas de arquitectura limpia, ideal para entornos bancarios o empresariales.
@@ -227,14 +228,14 @@ Para construir la imagen Docker, ejecute desde la raíz del proyecto:
 cp applications/app-service/build/libs/*.jar deployment/
 
 # Construir la imagen Docker
-docker build -t bancolombia/scaffold-usuarios:1.0 deployment/
+docker build -t santiagosuarezosorio/scaffold-usuarios:1.0 deployment/
 ```
 
 ### Ejecutar el contenedor
 
 ```bash
 # Ejecutar el contenedor mapeando el puerto 8080
-docker run -p 8080:8080 --name scaffold-usuarios bancolombia/scaffold-usuarios:1.0
+docker run -p 8080:8080 --name scaffold-usuarios santiagosuarezosorio/scaffold-usuarios:1.0
 ```
 
 ### Verificar el estado del contenedor
@@ -260,7 +261,7 @@ docker run -p 8080:8080 \
   -e SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/usuarios \
   -e SPRING_DATASOURCE_USERNAME=postgres \
   -e SPRING_DATASOURCE_PASSWORD=secreto \
-  bancolombia/scaffold-usuarios:1.0
+  santiagosuarezosorio/scaffold-usuarios:1.0
 ```
 
 ### Despliegue con Docker Compose (Opcional)
@@ -272,7 +273,7 @@ version: '3.8'
 
 services:
   app:
-    image: bancolombia/scaffold-usuarios:1.0
+    image: santiagosuarezosorio/scaffold-usuarios:1.0
     ports:
       - "8080:8080"
     environment:
@@ -369,22 +370,28 @@ docker-build:
   if: github.event_name != 'pull_request'
   steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Download build artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: app-service-jar
         path: deployment/
 
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
     - name: Build and push Docker image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v5
       with:
         context: ./deployment
         push: true
         tags: |
-          bancolombia/scaffold-usuarios:latest
-          bancolombia/scaffold-usuarios:${{ github.sha }}
+          santiagosuarezosorio/scaffold-usuarios:latest
+          santiagosuarezosorio/scaffold-usuarios:${{ github.sha }}
 ```
 
 #### 3. Despliegue a Ambientes
