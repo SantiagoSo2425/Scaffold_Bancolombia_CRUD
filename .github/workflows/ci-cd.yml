@@ -97,8 +97,8 @@ jobs:
           context: ./deployment
           push: true
           tags: |
-            bancolombia/scaffold-usuarios:latest
-            bancolombia/scaffold-usuarios:${{ github.sha }}
+            santiagosuarezosorio/scaffold-usuarios:latest
+            santiagosuarezosorio/scaffold-usuarios:${{ github.sha }}
 
   deploy-dev:
     needs: docker-build
