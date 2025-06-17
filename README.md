@@ -431,3 +431,10 @@ El pipeline puede adaptarse fácilmente a necesidades específicas:
 
 El archivo de configuración está diseñado para ser extensible y adaptable a los flujos de trabajo específicos de cada equipo o proyecto.
 
+## 📄 Licencia
+
+MIT License
+
+Copyright (c) 2025 Santiago Suarez Osorio
+
+
