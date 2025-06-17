@@ -33,20 +33,33 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
+      # Paso para configurar el proyecto en SonarCloud por primera vez
+      - name: Create SonarCloud Project (first run only)
+        if: true  # Activado para crear el proyecto
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          curl -X POST -u $SONAR_TOKEN: "https://sonarcloud.io/api/projects/create" \
+          -d "name=Scaffold Bancolombia" \
+          -d "project=SantiagoSo2425_Scaffold_Bancolombia" \
+          -d "organization=santiagoso2425" \
+          -d "visibility=public"
+
       - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
             -Dsonar.organization=santiagoso2425
             -Dsonar.projectKey=SantiagoSo2425_Scaffold_Bancolombia
+            -Dsonar.projectName="Scaffold Bancolombia"
             -Dsonar.sources=.
             -Dsonar.exclusions=**/*Test*/**,**/build/**,**/.gradle/**
             -Dsonar.java.binaries=**/build/classes
             -Dsonar.java.libraries=**/*.jar
-            -Dsonar.projectName="Scaffold Bancolombia"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
